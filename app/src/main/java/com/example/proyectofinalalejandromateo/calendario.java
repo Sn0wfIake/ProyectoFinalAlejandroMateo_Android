@@ -76,6 +76,8 @@ public class calendario extends AppCompatActivity {
                 insertaevento(fecha, evento);
                 //Vuelco el hasmap en mis preferencias
                 guardarPreferencias(fecha, evento);
+
+                trabajo.setText("");
             }
         });
 

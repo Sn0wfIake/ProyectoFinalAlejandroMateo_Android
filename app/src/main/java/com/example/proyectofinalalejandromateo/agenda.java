@@ -78,11 +78,11 @@ public class agenda extends AppCompatActivity {
     //arraylist?ª?!?!?
         private ArrayList hasmapToArray(HashMap agenda) {
             Iterator<String> it = agenda.keySet().iterator();
-            ArrayList<String> ListaAgenda= new ArrayList<>();
+            ArrayList ListaAgenda = new ArrayList<Map<String, String>>();
             while(it.hasNext()){
                 String clave = it.next();
                 String valor = (String) agenda.get(clave);
-                String cosa="Fecha del evento: " + clave + " Evento:" + valor;
+                String cosa="Evento:" + valor+" "+ clave;
 
                 ListaAgenda.add(cosa);
 
@@ -92,13 +92,5 @@ public class agenda extends AppCompatActivity {
         }
 
 
-        //TEst
-        public void aceptar() {
-            Toast t=Toast.makeText(this,"Bienvenido a probar el programa.", Toast.LENGTH_SHORT);
-            t.show();
-        }
 
-    public void cancelar() {
-        finish();
-    }
 }
