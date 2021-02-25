@@ -47,6 +47,9 @@ public class calendario extends AppCompatActivity {
         //Donde se muestra tarea si hay
         textoevento.setText("");
 
+
+
+
         //Control del calendario
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -91,6 +94,14 @@ public class calendario extends AppCompatActivity {
                 borrarevento(fecha);
                 //Borro la preferencia de esta fecha para eliminar el dato
                 borrarpreferencias(fecha);
+            }
+        });
+        //Boton volver
+        Button volver = (Button) findViewById(R.id.volver);
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
