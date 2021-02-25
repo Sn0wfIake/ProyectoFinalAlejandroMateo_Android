@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,7 @@ import java.util.Set;
 
 public class agenda extends AppCompatActivity {
     Map agenda = new HashMap();
-    ArrayList ListaAgenda = new ArrayList();
+    ArrayList <tareas> ListaAgenda = new ArrayList<tareas>();
     ListView listaeventos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +38,19 @@ public class agenda extends AppCompatActivity {
         //Genero mi lista, con los eventos del calendario
         listaeventos= (ListView) findViewById(R.id.listaeventos);
 
-        ArrayAdapter adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ListaAgenda);
+        ArrayAdapter <tareas> adaptador = new ArrayAdapter<tareas>(this, android.R.layout.simple_list_item_1, ListaAgenda);
         listaeventos.setAdapter(adaptador);
-       listaeventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listaeventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               tareas t = ListaAgenda.get(position);
+               Intent intent = new Intent(getApplicationContext(), elementoslista.class);
+               intent.putExtra("fechaseleccionada",t.getFecha() );
+               intent.putExtra("textoevento", t.getNombreEvento());
+               intent.putExtra("tituloevento", t.getRestoEvento());
+               startActivity(intent);
 
+              Toast.makeText(getApplicationContext(),"ID: "+t.getFecha()+" Nombre: "+t.getNombreEvento(), Toast.LENGTH_SHORT).show();
            }
        });
         }
@@ -75,16 +83,26 @@ public class agenda extends AppCompatActivity {
         agenda = preferences.getAll();
         return agenda;
     }
+
+//Con este metodo me guardo los eventos de la agenda
+    private void guardarDatos(String fecha, String evento) {
+        SharedPreferences preferences = getSharedPreferences("agenda", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(fecha, evento);
+        //IMPORTANTE PARA QUE SE CREE EL ARCHIVO
+        editor.commit();
+    }
     //arraylist?ª?!?!?
         private ArrayList hasmapToArray(HashMap agenda) {
             Iterator<String> it = agenda.keySet().iterator();
-            ArrayList ListaAgenda = new ArrayList<Map<String, String>>();
+            ArrayList ListaAgenda = new ArrayList<tareas>();
             while(it.hasNext()){
+                tareas t = new tareas();
                 String clave = it.next();
                 String valor = (String) agenda.get(clave);
-                String cosa="Evento:" + valor+" "+ clave;
-
-                ListaAgenda.add(cosa);
+                t.setFecha(clave);
+                t.setNombreEvento(valor);
+                ListaAgenda.add(new tareas(t.getFecha().toString(), t.getNombreEvento().toString()));
 
             }
 

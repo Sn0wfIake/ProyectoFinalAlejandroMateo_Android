@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.proyectofinalalejandromateo">
 
     <application
@@ -9,9 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".agenda"  android:theme="@style/Theme.AppCompat.Light.NoActionBar"> </activity>
-        <activity android:name=".calendario"  android:theme="@style/Theme.AppCompat.Light.NoActionBar">> </activity>
+        <activity android:name=".elementoslista"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
+        <activity
+            android:name=".agenda"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".calendario"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

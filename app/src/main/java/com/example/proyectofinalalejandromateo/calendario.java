@@ -33,7 +33,7 @@ public class calendario extends AppCompatActivity {
         calendarView = (CalendarView) findViewById(R.id.calendarView);
 
         //La fecha que ha sido seleccionada en el calendario
-        fechaseleccionada = (TextView) findViewById(R.id.evento);
+        fechaseleccionada = (TextView) findViewById(R.id.titulo);
 
         //TextView en el que se muestra el evento
         textoevento = (TextView) findViewById(R.id.texto);
