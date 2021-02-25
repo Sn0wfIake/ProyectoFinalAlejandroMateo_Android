@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,14 +51,23 @@ public class calendario extends AppCompatActivity {
         textoevento.setText("");
 
 
+        //Solucion a un bug, que al meterte por primera vez, no mostraba eventos
+        String date = "Fecha: "+new SimpleDateFormat("dd-M-yyyy").format(new Date());
 
+        Toast.makeText(getApplicationContext(), date, Toast.LENGTH_SHORT).show();
+        fechaseleccionada.setText(date);
+        if (agenda.containsKey(date)){
+            textoevento.setText(muestraevento(date));
+        }else{
+            textoevento.setText("Sin eventos! Puedes añadir uno");
+        }
 
         //Control del calendario
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
                 i1 += 1;
-                String fecha = "Fecha: " + i2 + " - " + i1 + " - " + i;
+                String fecha = "Fecha: " + i2 + "-" + i1 + "-" + i;
                 fechaseleccionada.setText(fecha);
                 // Toast.makeText(getApplicationContext(), "Selected Date:\n"+fecha, Toast.LENGTH_LONG).show();
 
@@ -63,7 +75,7 @@ public class calendario extends AppCompatActivity {
                 if (agenda.containsKey(fecha)) {
                     textoevento.setText(muestraevento(fecha));
                 } else {
-                    textoevento.setText("");
+                    textoevento.setText("Sin eventos! Puedes añadir uno");
                 }
             }
         });
