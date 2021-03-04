@@ -54,7 +54,7 @@ public class calendario extends AppCompatActivity {
         //Solucion a un bug, que al meterte por primera vez, no mostraba eventos
         String date = "Fecha: "+new SimpleDateFormat("dd-M-yyyy").format(new Date());
 
-        Toast.makeText(getApplicationContext(), date, Toast.LENGTH_SHORT).show();
+
         fechaseleccionada.setText(date);
         if (agenda.containsKey(date)){
             textoevento.setText(muestraevento(date));

@@ -114,13 +114,13 @@ public class elementoslista extends AppCompatActivity {
                                 borrarevento(fecha);
                                 //Borro la preferencia de esta fecha para eliminar el dato
                                 borrarpreferencias(fecha);
-                                Toast.makeText(getApplicationContext(), "Si", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Evento Borrado", Toast.LENGTH_SHORT).show();
                                 finish();
                                 break;
 
                             case DialogInterface.BUTTON_NEGATIVE:
                                 // User clicked the No button
-                                Toast.makeText(getApplicationContext(), "nel prro", Toast.LENGTH_SHORT).show();
+
                                 break;
                         }
                     }
@@ -128,7 +128,7 @@ public class elementoslista extends AppCompatActivity {
 
 
                 // Set the alert dialog yes button click listener
-                builder.setPositiveButton("Yes", dialogClickListener);
+                builder.setPositiveButton("Si", dialogClickListener);
 
                 // Set the alert dialog no button click listener
                 builder.setNegativeButton("No",dialogClickListener);

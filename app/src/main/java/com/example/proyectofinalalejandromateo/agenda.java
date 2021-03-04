@@ -67,7 +67,7 @@ public class agenda extends AppCompatActivity {
                     intent.putExtra("textoevento", t.getRestoEvento());
                     intent.putExtra("tituloevento", t.getNombreEvento());
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "ID: " + t.getFecha() + " Nombre: " + t.getNombreEvento(), Toast.LENGTH_SHORT).show();
+
                 }
             });
         }
@@ -161,7 +161,7 @@ public class agenda extends AppCompatActivity {
                     intent.putExtra("textoevento", t.getRestoEvento());
                     intent.putExtra("tituloevento", t.getNombreEvento());
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "ID: " + t.getFecha() + " Nombre: " + t.getNombreEvento(), Toast.LENGTH_SHORT).show();
+
                 }
             });
         }
